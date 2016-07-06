@@ -1,3 +1,7 @@
+" #########################
+" Vundle
+" #########################
+
 " Vundle set up
 set nocompatible
 filetype off
@@ -19,6 +23,12 @@ Plugin 'plasticboy/vim-markdown'
 " fugitive for Git integration
 Plugin 'tpope/vim-fugitive'
 
+" Nvim-R
+Plugin 'jalvesaq/Nvim-R'
+
+" Vim Slime
+Plugin 'jpalardy/vim-slime'
+
 " all plugins must be added BEFORE the following line
 call vundle#end()
 filetype plugin indent on
@@ -31,48 +41,73 @@ filetype plugin indent on
 " see :h vundle for more details or wiki for FAQ
 " Put non-Plugin stuff after this line
 
-" vim-airline configuration
+" #########################
+" vim-airline
+" #########################
+
 " make status bar always appear
 set laststatus=2
 
-" aesthetics settings
+" use powerline fonts
+let g:airline_powerline_fonts = 1
+
+" #########################
+" Aesthetics
+" #########################
+
 " solarized dark theme
 syntax enable
 set background=dark
 colorscheme solarized
+
 " show line number
 set nu
+
 " highlight the 80th column
 set colorcolumn=80
+
 " highlight search matches
 set incsearch
 
-" mappings
+" #########################
+" Mappings
+" #########################
+
+" easy editing vimrc
+nnoremap <leader>ev :edit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " map jk to ESC in insert mode
 imap jk <esc>
-
-" tab/indentation settings
-set ts=8 sts=8 sw=8 expandtab
-
-" tab completion settings
-" enable a menu at the bottom
-set wildmenu
-" first tab = command will be completed to the longest common command
-" second tab = show all completion matches
-set wildmode=longest,list
 
 " mapping settings
 let mapleader=","
 " remap comma key to back slash
 nmap \ ,
 
-" copy settings
-" Y copies until the end of line
+" Copy into the end of line
 nmap Y y$
-" Ctrl-y copies until the end of line into system clipboard
-nmap <C-y> "+y$
-" Ctrl-c copy into system clipboard
+" Copy until the end of line into system clipboard
+nmap <C-Y> "+y$
+" Copy an entire line and paste before the current line
+nmap _ ggY``P
+" Copy to clipboard
 vmap <C-c> "+y
+
+" Map ctrl+Del to delete until the end of line in insert mode
+imap <C-Del> <C-\><C-O>D
+
+" Keep the visual block intact after indenting
+vmap > >gv
+vmap < <gv
+
+" split pane settings
+set splitbelow
+set splitright
+nmap <C-J> <C-W><C-J>
+nmap <C-K> <C-W><C-K>
+nmap <C-L> <C-W><C-L>
+nmap <C-H> <C-W><C-H>
 
 " invisible character mapping
 nmap <leader>l :set list!<CR>
@@ -85,17 +120,37 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
-" Ex command history settings
-set history=200
+" #########################
+" Tab/indentation
+" #########################
 
-" Enable matchit
-runtime macros/matchit.vim
+set tabstop=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
 
-" vim markdown settings
+" #########################
+" Tab completion
+" #########################
+
+" enable a menu at the bottom
+set wildmenu
+
+" first tab = command will be completed to the longest common command
+" second tab = show all completion matches
+set wildmode=longest,list,full
+
+" #########################
+" vim markdown
+" #########################
+
 " disable folding
 let g:vim_markdown_folding_disabled=1
 
+" #########################
 " stripping trailing whitespaces
+" #########################
+
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
@@ -109,3 +164,26 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 nmap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+" #########################
+" others
+" #########################
+
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+" Restore cursor position
+:au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+
+" F2 toggles paste mode and insert mode
+set pastetoggle=<F2>
+
+" maximum number of tabs
+set tabpagemax=100
+
+" use par to format
+set formatprg=par\ -w80
