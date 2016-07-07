@@ -26,7 +26,7 @@ Plugin 'tpope/vim-fugitive'
 " commentary
 Plugin 'tpope/vim-commentary'
 
-" surroud
+" surround
 Plugin 'tpope/vim-surround'
 
 " Nvim-R
@@ -130,9 +130,13 @@ map <leader>et :tabe %%
 " Tab/indentation
 " #########################
 
+" how many columns a tab counts for
 set tabstop=2
-set softtabstop=2
+" tab inserts spaces
 set expandtab
+" how many columns when Tab in insert mode
+set softtabstop=2
+" how many columns text is indented
 set shiftwidth=2
 
 " #########################
