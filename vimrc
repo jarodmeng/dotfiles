@@ -23,6 +23,12 @@ Plugin 'plasticboy/vim-markdown'
 " fugitive for Git integration
 Plugin 'tpope/vim-fugitive'
 
+" commentary
+Plugin 'tpope/vim-commentary'
+
+" surroud
+Plugin 'tpope/vim-surround'
+
 " Nvim-R
 Plugin 'jalvesaq/Nvim-R'
 
