@@ -35,6 +35,9 @@ Plugin 'jalvesaq/Nvim-R'
 " Vim Slime
 Plugin 'jpalardy/vim-slime'
 
+" github color scheme
+Plugin 'endel/vim-github-colorscheme'
+
 " all plugins must be added BEFORE the following line
 call vundle#end()
 filetype plugin indent on
@@ -65,6 +68,10 @@ let g:airline_powerline_fonts = 1
 syntax enable
 set background=dark
 colorscheme solarized
+
+if &diff
+  colorscheme github
+endif
 
 " show line number
 set nu
