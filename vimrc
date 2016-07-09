@@ -217,6 +217,15 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 call camelcasemotion#CreateMotionMappings('<leader>')
 
 " #########################
+" bufexplorer
+" #########################
+
+nnoremap <silent> <F11> :BufExplorer<CR>
+nnoremap <silent> <s-F11> :ToggleBufExplorer<CR>
+nnoremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
+nnoremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
+
+" #########################
 " stripping trailing whitespaces
 " #########################
 
