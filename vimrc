@@ -13,6 +13,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" solarized
+Plugin 'altercation/vim-colors-solarized'
+
 " vim-airline for status/tabline
 Plugin 'bling/vim-airline'
 
