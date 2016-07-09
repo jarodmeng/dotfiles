@@ -82,7 +82,7 @@ if &diff
 endif
 
 " show line number
-set nu
+set number
 
 " highlight the 80th column
 set colorcolumn=80
@@ -103,6 +103,7 @@ imap jk <esc>
 
 " mapping settings
 let mapleader=","
+let maplocalleader=";"
 " remap comma key to back slash
 nmap \ ,
 
@@ -171,6 +172,25 @@ set wildmode=longest,list,full
 
 " disable folding
 let g:vim_markdown_folding_disabled=1
+
+" #########################
+" nvim-R
+" #########################
+
+vmap <Space> <Plug>RDSendSelection
+nmap <Space> <Plug>RDSendLine
+let R_in_buffer = 0
+let R_applescript = 0
+let R_tmux_split = 1
+let R_vsplit = 1
+let R_assign = 0
+
+" #########################
+" vim-slime
+" #########################
+
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
 
 " #########################
 " stripping trailing whitespaces
