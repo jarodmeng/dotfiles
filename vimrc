@@ -13,6 +13,15 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Auto Pairs
+Plugin 'jiangmiao/auto-pairs'
+
+" Super Tab
+Plugin 'ervandew/supertab'
+
+" Tagbar
+Plugin 'majutsushi/tagbar'
+
 " solarized
 Plugin 'altercation/vim-colors-solarized'
 
