@@ -53,6 +53,10 @@ filetype plugin indent on
 " see :h vundle for more details or wiki for FAQ
 " Put non-Plugin stuff after this line
 
+if $WORK == "true"
+  source ~/.vimrc.google
+endif
+
 " #########################
 " vim-airline
 " #########################
