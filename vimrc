@@ -13,6 +13,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Syntastic
+Plugin 'scrooloose/syntastic'
+
 " Auto Pairs
 Plugin 'jiangmiao/auto-pairs'
 
