@@ -22,6 +22,15 @@ Plugin 'ervandew/supertab'
 " Tagbar
 Plugin 'majutsushi/tagbar'
 
+" CamelCaseMotion
+Plugin 'bkad/CamelCaseMotion'
+
+" bugexplorer
+Plugin 'jlanzarotta/bufexplorer'
+
+" YankRing
+Plugin 'vim-scripts/YankRing.vim'
+
 " solarized
 Plugin 'altercation/vim-colors-solarized'
 
@@ -200,6 +209,12 @@ let R_assign = 0
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
+
+" #########################
+" vim-slime
+" #########################
+
+call camelcasemotion#CreateMotionMappings('<leader>')
 
 " #########################
 " stripping trailing whitespaces
