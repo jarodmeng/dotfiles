@@ -211,7 +211,7 @@ let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
 
 " #########################
-" vim-slime
+" CamelCaseMotion
 " #########################
 
 call camelcasemotion#CreateMotionMappings('<leader>')
