@@ -101,6 +101,9 @@ set laststatus=2
 " use powerline fonts
 let g:airline_powerline_fonts = 1
 
+" tabline
+let g:airline#extensions#tabline#enabled = 1
+
 " #########################
 " Aesthetics
 " #########################
@@ -123,6 +126,15 @@ set colorcolumn=80
 
 " highlight search matches
 set incsearch
+
+" formatoptions to disable auto comment headers
+au FileType * set fo-=c fo-=r fo-=o
+
+" hidden to allow multiple unsaved buffers
+set hidden
+
+" backspace to allow using backspace button
+set backspace=indent,eol,start
 
 " #########################
 " Mappings
