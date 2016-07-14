@@ -62,6 +62,9 @@ Plugin 'jpalardy/vim-slime'
 " github color scheme
 Plugin 'endel/vim-github-colorscheme'
 
+" gruvbox
+Plugin 'morhetz/gruvbox'
+
 " all plugins must be added BEFORE the following line
 call vundle#end()
 filetype plugin indent on
