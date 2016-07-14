@@ -74,22 +74,22 @@ filetype plugin indent on
 " see :h vundle for more details or wiki for FAQ
 " Put non-Plugin stuff after this line
 
-if $WORK == "true"
-  source ~/.vimrc.google
-endif
-
 " #########################
 " syntastic
 " #########################
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+if $WORK == "true"
+  source ~/.vimrc.google
+endif
 
 " #########################
 " vim-airline
@@ -111,7 +111,7 @@ let g:airline#extensions#tabline#enabled = 1
 " solarized dark theme
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 call togglebg#map(",T")
 
 if &diff
