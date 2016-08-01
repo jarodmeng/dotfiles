@@ -28,8 +28,8 @@ Plugin 'majutsushi/tagbar'
 " CamelCaseMotion
 Plugin 'bkad/CamelCaseMotion'
 
-" bugexplorer
-Plugin 'jlanzarotta/bufexplorer'
+" bugexplorer (it needs vim patches 1261 and 1264)
+" Plugin 'jlanzarotta/bufexplorer'
 
 " YankRing
 Plugin 'vim-scripts/YankRing.vim'
