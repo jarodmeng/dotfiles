@@ -59,9 +59,6 @@ Plugin 'jalvesaq/Nvim-R'
 " Vim Slime
 Plugin 'jpalardy/vim-slime'
 
-" github color scheme
-Plugin 'endel/vim-github-colorscheme'
-
 " gruvbox
 Plugin 'morhetz/gruvbox'
 
@@ -116,10 +113,6 @@ syntax enable
 set background=dark
 colorscheme gruvbox
 call togglebg#map(",T")
-
-if &diff
-  colorscheme github
-endif
 
 " show line number
 set number
@@ -273,6 +266,14 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 nmap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+" #########################
+" vimdiff
+" #########################
+
+map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
+map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
+map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 
 " #########################
 " others
