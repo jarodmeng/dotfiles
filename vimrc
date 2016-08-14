@@ -20,9 +20,11 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jiangmiao/auto-pairs'
 
 " Super Tab
+" Perform all your vim insert mode completions with Tab
 Plugin 'ervandew/supertab'
 
 " Tagbar
+" Vim plugin that displays tags in a window
 Plugin 'majutsushi/tagbar'
 
 " CamelCaseMotion
@@ -32,6 +34,7 @@ Plugin 'bkad/CamelCaseMotion'
 " Plugin 'jlanzarotta/bufexplorer'
 
 " YankRing
+" Maintains a history of previous yanks, changes and deletes
 Plugin 'vim-scripts/YankRing.vim'
 
 " solarized
