@@ -19,19 +19,25 @@ Plugin 'scrooloose/syntastic'
 " Auto Pairs
 Plugin 'jiangmiao/auto-pairs'
 
+" vim-go
+Plugin 'fatih/vim-go'
+
 " Super Tab
+" Perform all your vim insert mode completions with Tab
 Plugin 'ervandew/supertab'
 
 " Tagbar
+" Vim plugin that displays tags in a window
 Plugin 'majutsushi/tagbar'
 
 " CamelCaseMotion
 Plugin 'bkad/CamelCaseMotion'
 
 " bugexplorer (it needs vim patches 1261 and 1264)
-" Plugin 'jlanzarotta/bufexplorer'
+Plugin 'jlanzarotta/bufexplorer'
 
 " YankRing
+" Maintains a history of previous yanks, changes and deletes
 Plugin 'vim-scripts/YankRing.vim'
 
 " solarized
@@ -276,6 +282,25 @@ nmap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
+
+" #########################
+" Tagbar
+" #########################
+
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
+let g:tagbar_width=26                          " Default is 40, seems too wide
+
+" #########################
+" vim-go
+" #########################
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
 
 " #########################
 " others
