@@ -39,6 +39,7 @@ Plugin 'altercation/vim-colors-solarized'
 
 " vim-airline for status/tabline
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " vim markdown for markdown syntax
 Plugin 'godlygeek/tabular'
@@ -98,7 +99,7 @@ endif
 " make status bar always appear
 set laststatus=2
 
-" use powerline fonts
+" air-line
 let g:airline_powerline_fonts = 1
 
 " tabline
@@ -112,6 +113,7 @@ let g:airline#extensions#tabline#enabled = 1
 syntax enable
 set background=dark
 colorscheme gruvbox
+set t_Co=256
 call togglebg#map(",T")
 
 " show line number
