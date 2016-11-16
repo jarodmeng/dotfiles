@@ -60,9 +60,6 @@ Plugin 'tpope/vim-commentary'
 " surround
 Plugin 'tpope/vim-surround'
 
-" Nvim-R
-Plugin 'jalvesaq/Nvim-R'
-
 " Vim Slime
 Plugin 'jpalardy/vim-slime'
 
