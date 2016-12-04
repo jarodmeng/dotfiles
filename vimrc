@@ -16,9 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Syntastic
 Plugin 'scrooloose/syntastic'
 
-" Auto Pairs
-Plugin 'jiangmiao/auto-pairs'
-
 " vim-go
 Plugin 'fatih/vim-go'
 
