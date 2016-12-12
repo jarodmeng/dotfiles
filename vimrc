@@ -16,6 +16,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Syntastic
 Plugin 'scrooloose/syntastic'
 
+" NERD tree
+Plugin 'scrooloose/nerdtree'
+
 " vim-go
 Plugin 'fatih/vim-go'
 
