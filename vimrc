@@ -66,6 +66,9 @@ Plugin 'jpalardy/vim-slime'
 " gruvbox
 Plugin 'morhetz/gruvbox'
 
+" Nvim-R
+Plugin 'jalvesaq/Nvim-R'
+
 " all plugins must be added BEFORE the following line
 call vundle#end()
 filetype plugin indent on
