@@ -19,8 +19,11 @@ Plugin 'scrooloose/syntastic'
 " NERD tree
 Plugin 'scrooloose/nerdtree'
 
+" Nvim-R
+Plugin 'jalvesaq/Nvim-R'
+
 " vim-go
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 
 " Super Tab
 " Perform all your vim insert mode completions with Tab
@@ -65,6 +68,9 @@ Plugin 'jpalardy/vim-slime'
 
 " gruvbox
 Plugin 'morhetz/gruvbox'
+
+" increment
+Plugin 'triglav/vim-visual-increment'
 
 " all plugins must be added BEFORE the following line
 call vundle#end()
@@ -229,7 +235,7 @@ nmap <Space> <Plug>RDSendLine
 let R_in_buffer = 0
 let R_applescript = 0
 let R_tmux_split = 1
-let R_vsplit = 1
+" let R_vsplit = 1
 let R_assign = 0
 
 " #########################
