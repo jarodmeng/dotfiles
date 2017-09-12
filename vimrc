@@ -327,3 +327,10 @@ set tabpagemax=100
 
 " use par to format
 set formatprg=par\ -w80
+
+" Auto-save folds state
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
