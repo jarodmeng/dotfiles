@@ -72,6 +72,9 @@ Plugin 'morhetz/gruvbox'
 " increment
 Plugin 'triglav/vim-visual-increment'
 
+" incsearch
+Plugin 'haya14busa/incsearch.vim'
+
 " all plugins must be added BEFORE the following line
 call vundle#end()
 filetype plugin indent on
@@ -304,6 +307,13 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+
+" #########################
+" incsearch.vim
+" #########################
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " #########################
 " others
