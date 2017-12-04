@@ -75,6 +75,9 @@ Plugin 'triglav/vim-visual-increment'
 " incsearch
 Plugin 'haya14busa/incsearch.vim'
 
+" vim-snipe
+Plugin 'yangmillstheory/vim-snipe'
+
 " all plugins must be added BEFORE the following line
 call vundle#end()
 filetype plugin indent on
