@@ -121,6 +121,11 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " #########################
+" vim-snipe
+" #########################
+map <leader><leader>f <Plug>(snipe-f)
+
+" #########################
 " Aesthetics
 " #########################
 
