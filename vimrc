@@ -238,7 +238,7 @@ set wildmode=longest,list,full
 let g:vim_markdown_folding_disabled=1
 
 " #########################
-" nvim-R
+" Nvim-R
 " #########################
 
 vmap <Space> <Plug>RDSendSelection
@@ -248,6 +248,15 @@ let R_applescript = 0
 let R_tmux_split = 1
 " let R_vsplit = 1
 let R_assign = 0
+
+function! SendInvisibleV()
+    let Rsource = g:rplugin_tmpdir . "/Rsource-" . getpid()
+    call writefile(["invisible("] + getline("'<", "'>") + [")"], Rsource)
+    call g:SendCmdToR('source("' . Rsource . '")')
+    call cursor(line("'>"), 0)
+    call GoDown()
+endfunction
+vmap <silent> <LocalLeader>ri <Esc>:call SendInvisibleV()<CR>
 
 " #########################
 " vim-slime
