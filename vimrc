@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Syntastic
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " NERD tree
 Plugin 'scrooloose/nerdtree'
@@ -27,11 +27,11 @@ Plugin 'jalvesaq/Nvim-R'
 
 " Super Tab
 " Perform all your vim insert mode completions with Tab
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
 
 " Tagbar
 " Vim plugin that displays tags in a window
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 
 " CamelCaseMotion
 Plugin 'bkad/CamelCaseMotion'
@@ -41,10 +41,10 @@ Plugin 'jlanzarotta/bufexplorer'
 
 " YankRing
 " Maintains a history of previous yanks, changes and deletes
-Plugin 'vim-scripts/YankRing.vim'
+" Plugin 'vim-scripts/YankRing.vim'
 
 " solarized
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 
 " vim-airline for status/tabline
 Plugin 'bling/vim-airline'
@@ -54,8 +54,11 @@ Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
 
+" Vim Markdown runtime files
+" Plugin 'tpope/vim-markdown'
+
 " fugitive for Git integration
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 
 " commentary
 Plugin 'tpope/vim-commentary'
@@ -77,6 +80,10 @@ Plugin 'haya14busa/incsearch.vim'
 
 " vim-snipe
 Plugin 'yangmillstheory/vim-snipe'
+
+" vim-pandoc
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 " all plugins must be added BEFORE the following line
 call vundle#end()
@@ -129,12 +136,16 @@ map <leader><leader>f <Plug>(snipe-f)
 " Aesthetics
 " #########################
 
-" solarized dark theme
+" gruvbox dark theme
 syntax enable
 set background=dark
+" let g:gruvbox_italic=1
+" set termguicolors
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
+hi clear SpellBad
+hi SpellBad cterm=underline,bold
 set t_Co=256
-call togglebg#map(",T")
 
 " show line number
 set number
@@ -159,17 +170,20 @@ set backspace=indent,eol,start
 " #########################
 
 " easy editing vimrc
-nnoremap <leader>ev :edit $MYVIMRC<cr>
+nnoremap <leader>ov :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" map jk to ESC in insert mode
-imap jk <esc>
+" spell
+nmap <silent> <leader>s :set spell!<CR>
 
 " mapping settings
 let mapleader=","
 let maplocalleader=";"
 " remap comma key to back slash
 nmap \ ,
+
+" map jk to ESC in insert mode
+imap jk <esc>
 
 " Copy into the end of line
 nmap Y y$
@@ -235,7 +249,7 @@ set wildmode=longest,list,full
 " #########################
 
 " disable folding
-let g:vim_markdown_folding_disabled=1
+" let g:vim_markdown_folding_disabled=1
 
 " #########################
 " Nvim-R
@@ -307,23 +321,15 @@ map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 
 " #########################
-" Tagbar
-" #########################
-
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
-let g:tagbar_width=26                          " Default is 40, seems too wide
-
-" #########################
 " vim-go
 " #########################
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_fmt_command = "goimports"
 
 " #########################
 " incsearch.vim
@@ -331,6 +337,12 @@ let g:go_fmt_command = "goimports"
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" #########################
+" vim-pandoc
+" #########################
+" Disable folding module
+let g:pandoc#modules#disabled = ["folding"]
 
 " #########################
 " others
@@ -356,8 +368,8 @@ set tabpagemax=100
 set formatprg=par\ -w80
 
 " Auto-save folds state
-augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
-augroup END
+" augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave ?* mkview
+"   autocmd BufWinEnter ?* silent loadview
+" augroup END
