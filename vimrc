@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Syntastic
-" Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 
 " NERD tree
 Plugin 'scrooloose/nerdtree'
@@ -42,9 +42,6 @@ Plugin 'jlanzarotta/bufexplorer'
 " YankRing
 " Maintains a history of previous yanks, changes and deletes
 " Plugin 'vim-scripts/YankRing.vim'
-
-" solarized
-" Plugin 'altercation/vim-colors-solarized'
 
 " vim-airline for status/tabline
 Plugin 'bling/vim-airline'
@@ -97,22 +94,21 @@ filetype plugin indent on
 " see :h vundle for more details or wiki for FAQ
 " Put non-Plugin stuff after this line
 
-" #########################
-" syntastic
-" #########################
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
 if $WORK == "true"
   source ~/.vimrc.google
 endif
+
+" #########################
+" syntastic
+" #########################
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " #########################
 " vim-airline
