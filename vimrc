@@ -55,7 +55,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'tpope/vim-markdown'
 
 " fugitive for Git integration
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " commentary
 Plugin 'tpope/vim-commentary'
@@ -81,6 +81,9 @@ Plugin 'yangmillstheory/vim-snipe'
 " vim-pandoc
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+
+" grammar check
+Plugin 'rhysd/vim-grammarous'
 
 " all plugins must be added BEFORE the following line
 call vundle#end()
