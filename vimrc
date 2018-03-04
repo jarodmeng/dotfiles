@@ -85,6 +85,9 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 " vim-signify
 Plugin 'mhinz/vim-signify'
 
+" grammar check
+Plugin 'rhysd/vim-grammarous'
+
 " all plugins must be added BEFORE the following line
 call vundle#end()
 filetype plugin indent on
