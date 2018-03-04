@@ -48,14 +48,14 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " vim markdown for markdown syntax
-" Plugin 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
 
 " Vim Markdown runtime files
 " Plugin 'tpope/vim-markdown'
 
 " fugitive for Git integration
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " commentary
 Plugin 'tpope/vim-commentary'
@@ -81,6 +81,9 @@ Plugin 'yangmillstheory/vim-snipe'
 " vim-pandoc
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+
+" vim-signify
+Plugin 'mhinz/vim-signify'
 
 " all plugins must be added BEFORE the following line
 call vundle#end()
