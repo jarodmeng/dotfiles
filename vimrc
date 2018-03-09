@@ -274,6 +274,10 @@ function! SendInvisibleV()
 endfunction
 vmap <silent> <LocalLeader>ri <Esc>:call SendInvisibleV()<CR>
 
+autocmd BufReadPre *.rbase.R let R_path='/usr/local/bin'
+autocmd BufReadPre *.rbase.R let R_app='R2'
+autocmd BufReadPre *.rbase.R let R_cmd='R2'
+
 " #########################
 " vim-slime
 " #########################
