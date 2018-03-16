@@ -66,6 +66,9 @@ Plugin 'tpope/vim-surround'
 " Vim Slime
 Plugin 'jpalardy/vim-slime'
 
+" SLIME
+Plugin 'epeli/slimux'
+
 " gruvbox
 Plugin 'morhetz/gruvbox'
 
@@ -82,11 +85,18 @@ Plugin 'yangmillstheory/vim-snipe'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 
+" vim-rmarkdown
+Plugin 'vim-pandoc/vim-rmarkdown'
+
 " vim-signify
 Plugin 'mhinz/vim-signify'
 
 " grammar check
 Plugin 'rhysd/vim-grammarous'
+
+" for languageserver
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
 
 " all plugins must be added BEFORE the following line
 call vundle#end()
@@ -103,6 +113,23 @@ filetype plugin indent on
 if $WORK == "true"
   source ~/.vimrc.google
 endif
+
+" #########################
+" languageserver
+" #########################
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'R Language Server',
+    \ 'cmd': {server_info->[
+    \   'R', '--quiet', '--slave', '-e', 'languageserver::run()']},
+    \ 'whitelist': ['r'],
+    \})
+
+nnoremap gd :LspDefinition<CR>
+nnoremap gr :LspReferences<CR>
+nnoremap gh :LspHover<CR>
+autocmd FileType r,rmd setlocal omnifunc=lsp#complete
+autocmd FileType r,rmd setlocal completeopt=menuone,preview,noselect
+let g:lsp_async_completion = 1
 
 " #########################
 " syntastic
@@ -274,9 +301,9 @@ function! SendInvisibleV()
 endfunction
 vmap <silent> <LocalLeader>ri <Esc>:call SendInvisibleV()<CR>
 
-autocmd BufReadPre *.rbase.R let R_path='/usr/local/bin'
-autocmd BufReadPre *.rbase.R let R_app='R2'
-autocmd BufReadPre *.rbase.R let R_cmd='R2'
+autocmd BufReadPre *.rg.R let R_path='/usr/bin'
+autocmd BufReadPre *.rg.R let R_app='R'
+autocmd BufReadPre *.rg.R let R_cmd='R'
 
 " #########################
 " vim-slime
