@@ -49,7 +49,7 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " vim markdown for markdown syntax
 Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 
 " Vim Markdown runtime files
 " Plugin 'tpope/vim-markdown'
@@ -131,6 +131,12 @@ autocmd FileType r,rmd setlocal omnifunc=lsp#complete
 autocmd FileType r,rmd setlocal completeopt=menuone,preview,noselect
 let g:lsp_async_completion = 1
 
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" for asyncomplete.vim log
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
 " #########################
 " syntastic
 " #########################
@@ -142,6 +148,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " #########################
 " vim-airline
@@ -376,6 +383,12 @@ map g/ <Plug>(incsearch-stay)
 " #########################
 " Disable folding module
 let g:pandoc#modules#disabled = ["folding"]
+
+" #########################
+" vim-markdown
+" #########################
+" Enable TOC autofit
+let g:vim_markdown_toc_autofit = 1
 
 " #########################
 " others
