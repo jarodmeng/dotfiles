@@ -131,6 +131,12 @@ autocmd FileType r,rmd setlocal omnifunc=lsp#complete
 autocmd FileType r,rmd setlocal completeopt=menuone,preview,noselect
 let g:lsp_async_completion = 1
 
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+" for asyncomplete.vim log
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
 " #########################
 " syntastic
 " #########################
@@ -302,8 +308,8 @@ endfunction
 vmap <silent> <LocalLeader>ri <Esc>:call SendInvisibleV()<CR>
 
 autocmd BufReadPre *.rg.R let R_path='/usr/bin'
-autocmd BufReadPre *.rg.R let R_app='R'
-autocmd BufReadPre *.rg.R let R_cmd='R'
+autocmd BufReadPre *.rg.R let R_app='Rg'
+autocmd BufReadPre *.rg.R let R_cmd='Rg'
 
 " #########################
 " vim-slime
