@@ -295,9 +295,11 @@ vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 let R_in_buffer = 0
 let R_applescript = 0
-let R_tmux_split = 1
-" let R_vsplit = 1
 let R_assign = 0
+let R_tmux_split = 1
+" So R opens in vertical
+let R_rconsole_width = 70
+let R_min_editor_width = 80
 
 function! SendInvisibleV()
     let Rsource = g:rplugin_tmpdir . "/Rsource-" . getpid()
