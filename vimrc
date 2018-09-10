@@ -220,6 +220,7 @@ nmap \ ,
 
 " map jk to ESC in insert mode
 imap jk <esc>
+tmap jk <esc>
 
 " Copy into the end of line
 nmap Y y$
@@ -293,13 +294,13 @@ set wildmode=longest,list,full
 
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
-let R_in_buffer = 0
-let R_applescript = 0
-let R_assign = 0
-let R_tmux_split = 1
-" So R opens in vertical
-let R_rconsole_width = 90
-let R_min_editor_width = 80
+
+" Uncomment the following lines if TMUX is needed to run R
+" Make sure that Nvim-R repo is cloned into ~/github
+" let R_in_buffer = 0
+" let R_source = '~/github/Nvim-R/R/tmux_split.vim'
+" let R_tmux_title = 'Nvim-R'
+" let R_tmux_title = 'automatic'
 
 function! SendInvisibleV()
     let Rsource = g:rplugin_tmpdir . "/Rsource-" . getpid()
@@ -309,6 +310,16 @@ function! SendInvisibleV()
     call GoDown()
 endfunction
 vmap <silent> <LocalLeader>ri <Esc>:call SendInvisibleV()<CR>
+
+" Emulate Tmux ^az
+function ZoomWindow()
+    let cpos = getpos(".")
+    tabnew %
+    redraw
+    call cursor(cpos[1], cpos[2])
+    normal! zz
+endfunction
+nmap gz :call ZoomWindow()<CR>
 
 " #########################
 " vim-slime
