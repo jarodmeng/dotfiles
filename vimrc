@@ -6,109 +6,75 @@
 set nocompatible
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Syntastic
-Plugin 'vim-syntastic/syntastic'
-
+Plug 'vim-syntastic/syntastic'
 " NERD tree
-Plugin 'scrooloose/nerdtree'
-
+Plug 'scrooloose/nerdtree'
 " Nvim-R
-Plugin 'jalvesaq/Nvim-R'
-
+Plug 'jalvesaq/Nvim-R'
 " vim-go
-" Plugin 'fatih/vim-go'
-
+" Plug 'fatih/vim-go'
 " Super Tab
 " Perform all your vim insert mode completions with Tab
-" Plugin 'ervandew/supertab'
-
+" Plug 'ervandew/supertab'
 " Tagbar
 " Vim plugin that displays tags in a window
-" Plugin 'majutsushi/tagbar'
-
+" Plug 'majutsushi/tagbar'
 " CamelCaseMotion
-Plugin 'bkad/CamelCaseMotion'
-
+Plug 'bkad/CamelCaseMotion'
 " bugexplorer (it needs vim patches 1261 and 1264)
-Plugin 'jlanzarotta/bufexplorer'
-
+Plug 'jlanzarotta/bufexplorer'
 " YankRing
 " Maintains a history of previous yanks, changes and deletes
-" Plugin 'vim-scripts/YankRing.vim'
-
+" Plug 'vim-scripts/YankRing.vim'
 " vim-airline for status/tabline
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " vim markdown for markdown syntax
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 " Vim Markdown runtime files
-" Plugin 'tpope/vim-markdown'
-
+" Plug 'tpope/vim-markdown'
 " fugitive for Git integration
-Plugin 'tpope/vim-fugitive'
-
+Plug 'tpope/vim-fugitive'
 " commentary
-Plugin 'tpope/vim-commentary'
-
+Plug 'tpope/vim-commentary'
 " surround
-Plugin 'tpope/vim-surround'
-
+Plug 'tpope/vim-surround'
 " Vim Slime
-Plugin 'jpalardy/vim-slime'
-
+Plug 'jpalardy/vim-slime'
 " SLIME
-Plugin 'epeli/slimux'
-
+Plug 'epeli/slimux'
 " gruvbox
-Plugin 'morhetz/gruvbox'
-
+Plug 'morhetz/gruvbox'
 " increment
-Plugin 'triglav/vim-visual-increment'
-
+Plug 'triglav/vim-visual-increment'
 " incsearch
-Plugin 'haya14busa/incsearch.vim'
-
+Plug 'haya14busa/incsearch.vim'
 " vim-snipe
-Plugin 'yangmillstheory/vim-snipe'
-
+Plug 'yangmillstheory/vim-snipe'
 " vim-pandoc
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 " vim-rmarkdown
-Plugin 'vim-pandoc/vim-rmarkdown'
-
+Plug 'vim-pandoc/vim-rmarkdown'
 " vim-signify
-Plugin 'mhinz/vim-signify'
-
+Plug 'mhinz/vim-signify'
 " grammar check
-Plugin 'rhysd/vim-grammarous'
-
+Plug 'rhysd/vim-grammarous'
 " for languageserver
-Plugin 'prabirshrestha/async.vim'
-Plugin 'prabirshrestha/vim-lsp'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+call plug#end()
 
-" all plugins must be added BEFORE the following line
-call vundle#end()
 filetype plugin indent on
-" brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put non-Plugin stuff after this line
 
 if $WORK == "true"
   source ~/.vimrc.google
@@ -117,25 +83,18 @@ endif
 " #########################
 " languageserver
 " #########################
-au User lsp_setup call lsp#register_server({
-    \ 'name': 'R Language Server',
-    \ 'cmd': {server_info->[
-    \   'R', '--quiet', '--slave', '-e', 'languageserver::run()']},
-    \ 'whitelist': ['r'],
-    \})
+" Required for operations modifying multiple buffers like rename.
+set hidden
 
-nnoremap gd :LspDefinition<CR>
-nnoremap gr :LspReferences<CR>
-nnoremap gh :LspHover<CR>
-autocmd FileType r,rmd setlocal omnifunc=lsp#complete
-autocmd FileType r,rmd setlocal completeopt=menuone,preview,noselect
-let g:lsp_async_completion = 1
+let g:LanguageClient_serverCommands = {
+    \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+    \ }
 
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
-
-" for asyncomplete.vim log
-let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " #########################
 " syntastic
@@ -320,6 +279,13 @@ function ZoomWindow()
     normal! zz
 endfunction
 nmap gz :call ZoomWindow()<CR>
+
+" For rtichoke
+let R_app = "rtichoke"
+let R_cmd = "R"
+let R_hl_term = 0
+let R_args = []  " if you had set any
+let R_bracketed_paste = 1
 
 " #########################
 " vim-slime
