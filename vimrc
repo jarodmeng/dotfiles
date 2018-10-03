@@ -3,8 +3,8 @@
 " #########################
 
 " Vundle set up
-set nocompatible
-filetype off
+" set nocompatible
+" filetype off
 
 call plug#begin('~/.vim/plugged')
 
@@ -87,7 +87,7 @@ endif
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+    \ 'r': ['r', '--slave', '-e', 'languageserver::run()'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -95,6 +95,7 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> fmt :call LanguageClient_textDocument_formatting()<CR>
 
 " #########################
 " syntastic
@@ -135,7 +136,7 @@ map <leader><leader>f <Plug>(snipe-f)
 syntax enable
 set background=dark
 " let g:gruvbox_italic=1
-" set termguicolors
+set termguicolors
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 hi clear SpellBad
@@ -270,6 +271,13 @@ function! SendInvisibleV()
 endfunction
 vmap <silent> <LocalLeader>ri <Esc>:call SendInvisibleV()<CR>
 
+autocmd BufReadPre *.r let $R_HOME='/usr/local/lib/R'
+autocmd BufReadPre *.r let R_path='/usr/local/bin'
+autocmd BufReadPre *.r let R_app='rtichoke'
+autocmd BufReadPre *.r let R_cmd='r'
+autocmd BufReadPre *.r let R_hl_term = 0
+autocmd BufReadPre *.r let R_bracketed_paste = 1
+
 " Emulate Tmux ^az
 function ZoomWindow()
     let cpos = getpos(".")
@@ -279,13 +287,6 @@ function ZoomWindow()
     normal! zz
 endfunction
 nmap gz :call ZoomWindow()<CR>
-
-" For rtichoke
-let R_app = "rtichoke"
-let R_cmd = "R"
-let R_hl_term = 0
-let R_args = []  " if you had set any
-let R_bracketed_paste = 1
 
 " #########################
 " vim-slime
