@@ -13,7 +13,10 @@ Plug 'vim-syntastic/syntastic'
 " NERD tree
 Plug 'scrooloose/nerdtree'
 " Nvim-R
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 Plug 'jalvesaq/Nvim-R'
+Plug 'gaalcaras/ncm-R'
 " vim-go
 " Plug 'fatih/vim-go'
 " Super Tab
@@ -21,7 +24,7 @@ Plug 'jalvesaq/Nvim-R'
 " Plug 'ervandew/supertab'
 " Tagbar
 " Vim plugin that displays tags in a window
-" Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " CamelCaseMotion
 Plug 'bkad/CamelCaseMotion'
 " bugexplorer (it needs vim patches 1261 and 1264)
@@ -64,6 +67,11 @@ Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'mhinz/vim-signify'
 " grammar check
 Plug 'rhysd/vim-grammarous'
+" lsp
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+" Deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " for languageserver
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -81,21 +89,30 @@ if $WORK == "true"
 endif
 
 " #########################
+" NCM2
+" #########################
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" #########################
 " languageserver
 " #########################
 " Required for operations modifying multiple buffers like rename.
-set hidden
+" set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'r': ['r', '--slave', '-e', 'languageserver::run()'],
-    \ }
+" let g:LanguageClient_serverCommands = {
+"     \ 'r': ['r', '--slave', '-e', 'languageserver::run()'],
+"     \ }
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> fmt :call LanguageClient_textDocument_formatting()<CR>
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <silent> fmt :call LanguageClient_textDocument_formatting()<CR>
 
 " #########################
 " syntastic
@@ -253,16 +270,10 @@ set wildmode=longest,list,full
 " #########################
 
 let R_assign = 0
+let R_cmd='R0'
 
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
-
-" Uncomment the following lines if TMUX is needed to run R
-" Make sure that Nvim-R repo is cloned into ~/github
-" let R_in_buffer = 0
-" let R_source = '~/github/Nvim-R/R/tmux_split.vim'
-" let R_tmux_title = 'Nvim-R'
-" let R_tmux_title = 'automatic'
 
 function! SendInvisibleV()
     let Rsource = g:rplugin_tmpdir . "/Rsource-" . getpid()
@@ -279,6 +290,7 @@ autocmd BufReadPre *.r let R_app='rtichoke'
 autocmd BufReadPre *.r let R_cmd='r'
 autocmd BufReadPre *.r let R_hl_term = 0
 autocmd BufReadPre *.r let R_bracketed_paste = 1
+autocmd BufReadPre *.R let R_app='R'
 
 " Emulate Tmux ^az
 function ZoomWindow()
@@ -367,6 +379,31 @@ let g:pandoc#modules#disabled = ["folding"]
 " #########################
 " Enable TOC autofit
 let g:vim_markdown_toc_autofit = 1
+
+" #########################
+" youcompleteme
+" #########################
+" Turn off ycm for R
+let g:ycm_filetype_blacklist = {'R': 1, 'r': 1}
+
+" #########################
+" ctags
+" #########################
+let g:tagbar_type_r = {
+  \ 'ctagstype' : 'r',
+  \ 'kinds'     : [
+      \ 'f:Functions',
+      \ 'g:GlobalVariables',
+      \ 'v:FunctionVariables',
+  \ ]
+  \ }
+
+" #########################
+" Tagbar
+" #########################
+" Turns on the TagBar
+nnoremap <leader>tb :TagbarToggle<CR>
+let g:tagbar_left = 1
 
 " #########################
 " others
