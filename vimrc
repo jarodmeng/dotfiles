@@ -84,10 +84,6 @@ call plug#end()
 
 filetype plugin indent on
 
-if $WORK == "true"
-  source ~/.vimrc.google
-endif
-
 " #########################
 " NCM2
 " #########################
