@@ -1,160 +1,64 @@
 " #########################
-" Vundle
+" vim-plug
 " #########################
-
-" Vundle set up
-" set nocompatible
-" filetype off
 
 call plug#begin('~/.vim/plugged')
 
-" Syntastic
-Plug 'vim-syntastic/syntastic'
-" NERD tree
-Plug 'scrooloose/nerdtree'
 " Nvim-R
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
 Plug 'jalvesaq/Nvim-R'
-Plug 'gaalcaras/ncm-R'
-" vim-go
-" Plug 'fatih/vim-go'
-" Super Tab
-" Perform all your vim insert mode completions with Tab
-" Plug 'ervandew/supertab'
-" Tagbar
-" Vim plugin that displays tags in a window
-Plug 'majutsushi/tagbar'
-" CamelCaseMotion
-Plug 'bkad/CamelCaseMotion'
-" bugexplorer (it needs vim patches 1261 and 1264)
-Plug 'jlanzarotta/bufexplorer'
-" YankRing
-" Maintains a history of previous yanks, changes and deletes
-" Plug 'vim-scripts/YankRing.vim'
-" vim-airline for status/tabline
-Plug 'bling/vim-airline'
+Plug 'jalvesaq/cmp-nvim-r'
+" nvim-cmp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'onsails/lspkind.nvim'
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+" vim-airline
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" vim markdown for markdown syntax
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-" Vim Markdown runtime files
-" Plug 'tpope/vim-markdown'
-" fugitive for Git integration
-Plug 'tpope/vim-fugitive'
+" gruvbox
+Plug 'morhetz/gruvbox'
 " commentary
 Plug 'tpope/vim-commentary'
 " surround
 Plug 'tpope/vim-surround'
-" Vim Slime
-Plug 'jpalardy/vim-slime'
-" SLIME
-Plug 'epeli/slimux'
-" gruvbox
-Plug 'morhetz/gruvbox'
-" increment
-Plug 'triglav/vim-visual-increment'
-" incsearch
-Plug 'haya14busa/incsearch.vim'
-" vim-snipe
-Plug 'yangmillstheory/vim-snipe'
-" vim-pandoc
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-" vim-rmarkdown
-Plug 'vim-pandoc/vim-rmarkdown'
-" vim-signify
-Plug 'mhinz/vim-signify'
-" grammar check
-Plug 'rhysd/vim-grammarous'
-" lsp
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-" Deoplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" for languageserver
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-call plug#end()
-
-filetype plugin indent on
-
-" #########################
-" NCM2
-" #########################
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-
-" #########################
 " languageserver
-" #########################
-" Required for operations modifying multiple buffers like rename.
-" set hidden
-
-" let g:LanguageClient_serverCommands = {
-"     \ 'r': ['r', '--slave', '-e', 'languageserver::run()'],
+" Plug 'REditorSupport/languageserver'
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
 "     \ }
 
-" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-" nnoremap <silent> fmt :call LanguageClient_textDocument_formatting()<CR>
-
-" #########################
-" syntastic
-" #########################
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+call plug#end()
 
 " #########################
 " vim-airline
 " #########################
 
-" make status bar always appear
-set laststatus=2
-
 " air-line
 let g:airline_powerline_fonts = 1
-
-" tabline
-let g:airline#extensions#tabline#enabled = 1
-
-" #########################
-" vim-snipe
-" #########################
-map <leader><leader>f <Plug>(snipe-f)
+let g:airline_theme='bubblegum'
 
 " #########################
 " Aesthetics
 " #########################
 
+colorscheme gruvbox
+
 " gruvbox dark theme
-syntax enable
 set background=dark
-" let g:gruvbox_italic=1
 set termguicolors
 let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+set t_Co=256
+
+syntax enable
 hi clear SpellBad
 hi SpellBad cterm=underline,bold
-set t_Co=256
 
 " show line number
 set number
@@ -177,13 +81,6 @@ set backspace=indent,eol,start
 " #########################
 " Mappings
 " #########################
-
-" easy editing vimrc
-nnoremap <leader>ov :edit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" spell
-nmap <silent> <leader>s :set spell!<CR>
 
 " mapping settings
 let mapleader=","
@@ -255,18 +152,8 @@ set wildmenu
 set wildmode=longest,list,full
 
 " #########################
-" vim markdown
-" #########################
-
-" disable folding
-" let g:vim_markdown_folding_disabled=1
-
-" #########################
 " Nvim-R
 " #########################
-
-let R_assign = 0
-let R_cmd='R0'
 
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
@@ -280,45 +167,51 @@ function! SendInvisibleV()
 endfunction
 vmap <silent> <LocalLeader>ri <Esc>:call SendInvisibleV()<CR>
 
-autocmd BufReadPre *.r let $R_HOME='/usr/local/lib/R'
-autocmd BufReadPre *.r let R_path='/usr/local/bin'
-autocmd BufReadPre *.r let R_app='rtichoke'
-autocmd BufReadPre *.r let R_cmd='r'
-autocmd BufReadPre *.r let R_hl_term = 0
-autocmd BufReadPre *.r let R_bracketed_paste = 1
-autocmd BufReadPre *.R let R_app='R'
+lua <<EOF
+  local ok, lspkind = pcall(require, "lspkind")
+  if not ok then
+    return
+  end
 
-" Emulate Tmux ^az
-function ZoomWindow()
-    let cpos = getpos(".")
-    tabnew %
-    redraw
-    call cursor(cpos[1], cpos[2])
-    normal! zz
-endfunction
-nmap gz :call ZoomWindow()<CR>
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
 
-" #########################
-" vim-slime
-" #########################
-
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-
-" #########################
-" CamelCaseMotion
-" #########################
-
-call camelcasemotion#CreateMotionMappings('<leader>')
-
-" #########################
-" bufexplorer
-" #########################
-
-nnoremap <silent> <F11> :BufExplorer<CR>
-nnoremap <silent> <s-F11> :ToggleBufExplorer<CR>
-nnoremap <silent> <m-F11> :BufExplorerHorizontalSplit<CR>
-nnoremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
+  cmp.setup {
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+      { name = "vsnip" },
+    }, {
+      { name = "path" },
+      { name = "buffer", keyword_length = 5 },
+    }, {
+      { name = 'cmp_nvim_r' },
+    }),
+    formatting = {
+      format = lspkind.cmp_format {
+        with_text = true,
+        menu = {
+          buffer = "[buf]",
+          nvim_lsp = "[LSP]",
+          path = "[path]",
+          vsnip = "[snip]",
+          cmp_nvim_r = "[NvimR]",
+        },
+      },
+    },
+  }
+EOF
 
 " #########################
 " stripping trailing whitespaces
@@ -339,69 +232,6 @@ endfunction
 nmap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " #########################
-" vimdiff
-" #########################
-
-map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
-map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
-map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
-
-" #########################
-" vim-go
-" #########################
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_types = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_build_constraints = 1
-" let g:go_fmt_command = "goimports"
-
-" #########################
-" incsearch.vim
-" #########################
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" #########################
-" vim-pandoc
-" #########################
-" Disable folding module
-let g:pandoc#modules#disabled = ["folding"]
-
-" #########################
-" vim-markdown
-" #########################
-" Enable TOC autofit
-let g:vim_markdown_toc_autofit = 1
-
-" #########################
-" youcompleteme
-" #########################
-" Turn off ycm for R
-let g:ycm_filetype_blacklist = {'R': 1, 'r': 1}
-
-" #########################
-" ctags
-" #########################
-let g:tagbar_type_r = {
-  \ 'ctagstype' : 'r',
-  \ 'kinds'     : [
-      \ 'f:Functions',
-      \ 'g:GlobalVariables',
-      \ 'v:FunctionVariables',
-  \ ]
-  \ }
-
-" #########################
-" Tagbar
-" #########################
-" Turns on the TagBar
-nnoremap <leader>tb :TagbarToggle<CR>
-let g:tagbar_left = 1
-
-" #########################
 " others
 " #########################
 
@@ -417,18 +247,9 @@ endif
 " Restore cursor position
 :au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
-" F2 toggles paste mode and insert mode
-set pastetoggle=<F2>
-
-" maximum number of tabs
-set tabpagemax=100
-
-" use par to format
-set formatprg=par\ -w80
-
-" Auto-save folds state
-" augroup AutoSaveFolds
-"   autocmd!
-"   autocmd BufWinLeave ?* mkview
-"   autocmd BufWinEnter ?* silent loadview
-" augroup END
+" #########################
+" languageserver
+" #########################
+" let g:LanguageClient_serverCommands = {
+"     \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+"     \ }
