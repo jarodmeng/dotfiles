@@ -1,3 +1,10 @@
+" If there is a master.vimrc file, load it
+try
+  source $LOCAL_ADMIN_SCRIPTS/master.vimrc
+catch
+  " No such file? No problem; just ignore it.
+endtry
+
 " #########################
 " vim-plug
 " #########################
@@ -155,6 +162,14 @@ set wildmode=longest,list,full
 " Nvim-R
 " #########################
 
+autocmd BufNewFile *.R 0r ~/.vim/skeletons/r-blank.R
+
+let R_assign = 0
+
+nmap <silent> <LocalLeader>cn :call RAction("colnames")<CR>
+nmap <silent> <LocalLeader>tl :call RAction("tally")<CR>
+nmap <silent> <LocalLeader>sq :call RAction("show_query")<CR>
+nmap <silent> <LocalLeader>ph :call RAction("print", ", n = 100")<CR>
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 
