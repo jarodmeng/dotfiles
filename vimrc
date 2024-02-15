@@ -40,6 +40,9 @@ Plug 'tpope/vim-surround'
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
 "     \ }
+" bufferliine
+Plug 'nvim-tree/nvim-web-devicons' " Recommended (for coloured icons)
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 call plug#end()
 
@@ -226,6 +229,8 @@ lua <<EOF
       },
     },
   }
+
+  require("bufferline").setup{}
 EOF
 
 " #########################
