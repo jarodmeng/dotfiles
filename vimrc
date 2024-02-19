@@ -172,6 +172,7 @@ let R_assign = 0
 nmap <silent> <LocalLeader>cn :call RAction("colnames")<CR>
 nmap <silent> <LocalLeader>tl :call RAction("tally")<CR>
 nmap <silent> <LocalLeader>sq :call RAction("show_query")<CR>
+nmap <silent> <LocalLeader>do :call RAction("debugonce")<CR>
 nmap <silent> <LocalLeader>ph :call RAction("print", ", n = 100")<CR>
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
