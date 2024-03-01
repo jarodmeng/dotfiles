@@ -45,6 +45,8 @@ Plug 'nvim-tree/nvim-web-devicons' " Recommended (for coloured icons)
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 " Tabular
 Plug 'godlygeek/tabular'
+" Git integration
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
