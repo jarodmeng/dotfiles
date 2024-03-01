@@ -175,6 +175,7 @@ autocmd BufNewFile *.R 0r ~/.vim/skeletons/r-blank.R
 autocmd BufWritePre *.R,*.r,*.qmd,*.rmd,*.Qmd,*.Rmd :%s/%>%/|>/ge | write
 
 let R_assign = 0
+let R_quarto_preview_args = ', port = 8081, watch = FALSE'
 
 nmap <silent> <LocalLeader>cn :call RAction("colnames")<CR>
 nmap <silent> <LocalLeader>tl :call RAction("tally")<CR>
