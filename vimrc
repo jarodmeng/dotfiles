@@ -171,6 +171,9 @@ set wildmode=longest,list,full
 
 autocmd BufNewFile *.R 0r ~/.vim/skeletons/r-blank.R
 
+" Execute command when a .R file is written
+autocmd BufWritePre *.R,*.r,*.qmd,*.rmd,*.Qmd,*.Rmd :%s/%>%/|>/ge | write
+
 let R_assign = 0
 
 nmap <silent> <LocalLeader>cn :call RAction("colnames")<CR>
