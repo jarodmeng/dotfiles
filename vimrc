@@ -43,6 +43,8 @@ Plug 'tpope/vim-surround'
 " bufferliine
 Plug 'nvim-tree/nvim-web-devicons' " Recommended (for coloured icons)
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+" Tabular
+Plug 'godlygeek/tabular'
 
 call plug#end()
 
