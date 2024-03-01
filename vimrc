@@ -166,7 +166,7 @@ set wildmenu
 set wildmode=longest,list,full
 
 " #########################
-" Nvim-R
+" nvim-r
 " #########################
 
 autocmd BufNewFile *.R 0r ~/.vim/skeletons/r-blank.R
